@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "robertohuertasm.vscode-icons",
+      "esbenp.prettier-vscode"
+  ]
+}

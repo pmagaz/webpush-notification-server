@@ -1,0 +1,105 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "settings": {
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      {
+        "property": "freeze",
+        "object": "Object"
+      },
+      {
+        "property": "myFavoriteWrapper"
+      }
+    ]
+  },
+  "extends": ["airbnb-base"],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  "rules": {
+    "no-restricted-syntax": [
+      2,
+      "WithStatement",
+      "BinaryExpression[operator='in']"
+    ],
+    "object-curly-newline": [
+      2,
+      {
+        "ObjectPattern": "never",
+        "ImportDeclaration": "never",
+        "ExportDeclaration": "never"
+      }
+    ],
+    "padding-line-between-statements": [
+      2,
+      {
+        "blankLine": "any",
+        "prev": ["export", "import"],
+        "next": ["export", "import"]
+      }
+    ],
+    "max-params": [2, 3],
+    "max-lines": [2, { "max": 200, "skipComments": true }],
+    "max-lines-per-function": [2, { "max": 50, "skipBlankLines": true }],
+    "lines-between-class-members": [2, "always"],
+    "import/default": 0,
+    "implicit-arrow-linebreak": [0, "beside"],
+    "arrow-body-style": [0, "as-needed"],
+    "max-len": [2, { "code": 120 }],
+    "max-statements-per-line": [2, { "max": 1 }],
+    "import/no-duplicates": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/extensions": 0,
+    "import/named": 0,
+    "object-curly-spacing": [2, "always"],
+    "template-curly-spacing": [2, "always"],
+    "import/namespace": 0,
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 0,
+    "import/prefer-default-export": 0,
+    "comma-dangle": 0,
+    "indent": [
+      2,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "no-console": 0,
+    "no-alert": 0,
+    "semi": 2,
+    "no-var": 2,
+    "no-return-assign": 0,
+    "space-before-blocks": 2,
+    "keyword-spacing": 2,
+    "no-global-assign": 0,
+    "no-unsafe-negation": 0,
+    "space-in-parens": ["error", "never"],
+    "eol-last": 0,
+    "no-return-await": 0,
+    "no-trailing-spaces": 0,
+    "padded-blocks": 0,
+    "arrow-parens": 0,
+    "prefer-arrow-callback": 2,
+    "no-param-reassign": [
+      2,
+      {
+        "props": false
+      }
+    ],
+    "linebreak-style": 0,
+    "no-use-before-define": 0,
+    "class-methods-use-this": 0
+  }
+}
