@@ -19,6 +19,12 @@
     "nodejs",
     "service-worker"
   ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint",
+      "commit-msg": "echo $HUSKY_GIT_PARAMS"
+    }
+  },
   "author": "Pablo Magaz",
   "license": "MIT",
   "bugs": {
@@ -30,6 +36,7 @@
     "dotenv": "7.0.0",
     "esm": "3.2.22",
     "express": "4.16.4",
+    "husky": "1.3.1",
     "nedb": "1.8.0",
     "web-push": "3.3.3"
   },
