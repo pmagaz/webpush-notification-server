@@ -1,6 +1,6 @@
 {
   "name": "webpush-server",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Webpush Notification server",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pmagaz/webpush-server.git"
+    "url": "git+https://github.com/pmagaz/webpush-notification-server.git"
   },
   "keywords": [
     "webpush"
@@ -18,24 +18,13 @@
   "author": "Pablo Magaz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pmagaz/webpush-server/issues"
+    "url": "https://github.com/pmagaz/webpush-notification-server/issues"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run lint",
-      "commit-msg": "echo $HUSKY_GIT_PARAMS"
-    }
-  },
-  "homepage": "https://github.com/pmagaz/webpush-server#readme",
+  "homepage": "https://github.com/pmagaz/webpush-notification-server#readme",
   "dependencies": {
-    "@babel/core": "7.4.0",
-    "@babel/plugin-transform-runtime": "7.4.0",
-    "@babel/preset-env": "7.4.2",
-    "@babel/register": "7.4.0",
-    "@babel/runtime": "7.4.2",
-    "babel-plugin-module-resolver": "3.2.0",
     "body-parser": "1.18.3",
     "dotenv": "7.0.0",
+    "esm": "3.2.22",
     "express": "4.16.4",
     "husky": "1.3.1",
     "nedb": "1.8.0",
