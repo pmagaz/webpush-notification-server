@@ -36,12 +36,13 @@ Private Key:
 AkHoWx6QCoqEXFONg8xMpH1EKCLLpkBngEmUX9qzcn1
 ```
 
-Then you have to add both generated keys to the server. This project uses [DotEnv](https://github.com/motdotla/dotenv).configuration files. Open the `.env` file you will find in the root directory and add your generated keys as following:
+Then you have to add both generated keys to the server. This project uses [DotEnv](https://github.com/motdotla/dotenv).configuration files. Open the `.env` file you will find in the root directory and add your generated keys and a valid email as following:
 
 ```
 ...
 PUBLIC_KEY="YOUR_GENERATED_PUBLIC_KEY"
 PRIVATE_KEY="YOUR_GENERATED_PRIVATE_KEY"
+MAILTO='mailto:me@mysite.com'
 ...
 ```
 
