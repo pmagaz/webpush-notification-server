@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
-const registerUrl = 'http://localhost:9000/register';
-const serviceWorkerUrl = 'http://localhost:9000/public/serviceWorker.js';
-const publicVapidKey = 'BPD0vCl_PEpq8guPVpVsVouP-DMvA1iWbPgTuy6zRY1V915u0RMKA_XtxlQTdZUKtlqyMXBhVl7en4W3gWpROoQ';
+const registerUrl = 'http://localhost:8000/register';
+const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
+const publicVapidKey = 'YOUR_PUBLIC_KEY';
 const applicationServerKey = urlBase64ToUint8Array(publicVapidKey);
 
 const register = async () => {

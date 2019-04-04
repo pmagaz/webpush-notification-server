@@ -2,10 +2,9 @@
   <head>
     <title>Webpush Server</title>
     <script>
-      const sendEndpoint = "http://localhost:9000/send";
+      const sendEndpoint = "http://localhost:8000/send";
       const sendNotification = async () => {
         const data = document.getElementById("notification").value;
-        console.log(111111, JSON.stringify(JSON.parse(data)));
         const res = await fetch(sendEndpoint, {
           method: "POST",
           headers: {
@@ -30,6 +29,6 @@
         value="Send notification"
       />
     </div>
-    <script src="/public/register.js"></script>
+    <script src="/register.js"></script>
   </body>
 </html>

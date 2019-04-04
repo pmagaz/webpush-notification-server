@@ -1,5 +1,3 @@
-require('@babel/register')({
-  presets: ['@babel/preset-env']
-});
+require = require('esm')(module);
 
 module.exports = require('./server.js');
