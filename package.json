@@ -13,7 +13,11 @@
     "url": "git+https://github.com/pmagaz/webpush-notification-server.git"
   },
   "keywords": [
-    "webpush"
+    "webpush",
+    "express",
+    "notification",
+    "nodejs",
+    "service-worker"
   ],
   "author": "Pablo Magaz",
   "license": "MIT",
