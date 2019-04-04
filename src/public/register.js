@@ -26,7 +26,7 @@ const registerSubscription = async swRegistration => {
     const saved = await saveSubscription(subscription);
     if (saved) return saved;
     throw Error('Subscription not saved!');
-  }
+  } else return subscribed;
 };
 
 const saveSubscription = async subscription => {
