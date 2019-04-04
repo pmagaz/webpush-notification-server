@@ -1,0 +1,35 @@
+<html lang="utf-8">
+  <head>
+    <title>Webpush Server</title>
+    <script>
+      const sendEndpoint = "http://localhost:9000/send";
+      const sendNotification = async () => {
+        const data = document.getElementById("notification").value;
+        console.log(111111, JSON.stringify(JSON.parse(data)));
+        const res = await fetch(sendEndpoint, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(JSON.parse(data))
+        });
+        return res.status === 200 ? res.json() : false;
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="root">
+      <textarea rows="3" cols="70" id="notification">
+{"title": "Notification title", "body": "View in my site.", "url":"https://mysite.com"}</textarea
+      >
+      <input
+        type="button"
+        onClick="javascript:sendNotification();"
+        value="Send notification"
+      />
+    </div>
+    <script src="/public/register.js"></script>
+  </body>
+</html>
