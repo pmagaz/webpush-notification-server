@@ -29,8 +29,8 @@ const saveSubscription = async subscription => {
 
 const generateSubscription = async swRegistration => {
   await window.Notification.requestPermission();
-  const subscribed = await swRegistration.pushManager.getSubscription();
-  if (!subscribed) {
+  const pushSubscription = await swRegistration.pushManager.getSubscription();
+  if (!pushSubscription) {
     const subscription = await swRegistration.pushManager.subscribe({
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
@@ -38,7 +38,7 @@ const generateSubscription = async swRegistration => {
     const saved = await saveSubscription(subscription);
     if (saved) return saved;
     throw Error('Subscription not saved!');
-  } else return subscribed;
+  } else return pushSubscription;
 };
 
 const registerServiceWorker = async () => {
