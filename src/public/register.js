@@ -2,32 +2,18 @@
 const registerUrl = 'http://localhost:8000/register';
 const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
 const publicVapidKey = 'YOUR_PUBLIC_KEY';
-const applicationServerKey = urlBase64ToUint8Array(publicVapidKey);
 
-const register = async () => {
-  if ('serviceWorker' in navigator) {
-    const swRegistration = await registerServiceWorker();
-    await registerSubscription(swRegistration);
-  } else throw new Error('ServiceWorkers are not supported by your browser!');
-};
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
 
-const registerServiceWorker = async () => {
-  return await navigator.serviceWorker.register(serviceWorkerUrl);
-};
-
-const registerSubscription = async swRegistration => {
-  await window.Notification.requestPermission();
-  const subscribed = await swRegistration.pushManager.getSubscription();
-  if (!subscribed) {
-    const subscription = await swRegistration.pushManager.subscribe({
-      userVisibleOnly: true,
-      applicationServerKey
-    });
-    const saved = await saveSubscription(subscription);
-    if (saved) return saved;
-    throw Error('Subscription not saved!');
-  } else return subscribed;
-};
+  for (let i = 0; i < rawData.length; i += 1) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
 
 const saveSubscription = async subscription => {
   const res = await fetch(registerUrl, {
@@ -41,16 +27,29 @@ const saveSubscription = async subscription => {
   return res.status === 200 ? res.json() : false;
 };
 
-function urlBase64ToUint8Array(base64String) {
-  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-  const rawData = atob(base64);
-  const outputArray = new Uint8Array(rawData.length);
+const registerSubscription = async swRegistration => {
+  await window.Notification.requestPermission();
+  const subscribed = await swRegistration.pushManager.getSubscription();
+  if (!subscribed) {
+    const subscription = await swRegistration.pushManager.subscribe({
+      userVisibleOnly: true,
+      applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
+    });
+    const saved = await saveSubscription(subscription);
+    if (saved) return saved;
+    throw Error('Subscription not saved!');
+  } else return subscribed;
+};
 
-  for (let i = 0; i < rawData.length; i += 1) {
-    outputArray[i] = rawData.charCodeAt(i);
-  }
-  return outputArray;
-}
+const registerServiceWorker = async () => {
+  return await navigator.serviceWorker.register(serviceWorkerUrl);
+};
+
+const register = async () => {
+  if ('serviceWorker' in navigator) {
+    const swRegistration = await registerServiceWorker();
+    await registerSubscription(swRegistration);
+  } else throw new Error('ServiceWorkers are not supported by your browser!');
+};
 
 register();

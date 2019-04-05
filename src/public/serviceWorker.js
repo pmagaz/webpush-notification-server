@@ -3,6 +3,13 @@
 
 const notificationDelay = 500;
 
+const showNotification = (title, options) =>
+  new Promise(resolve => {
+    setTimeout(() => {
+      self.registration.showNotification(title, options).then(() => resolve());
+    }, notificationDelay);
+  });
+
 self.addEventListener('push', async event => {
   const res = JSON.parse(event.data.text());
   const { title, body, url, icon } = res.payload;
@@ -14,13 +21,6 @@ self.addEventListener('push', async event => {
   };
   event.waitUntil(showNotification(title, options));
 });
-
-const showNotification = (title, options) =>
-  new Promise(resolve => {
-    setTimeout(() => {
-      self.registration.showNotification(title, options).then(() => resolve());
-    }, notificationDelay);
-  });
 
 self.addEventListener('notificationclick', event => {
   event.notification.close();
