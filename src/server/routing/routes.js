@@ -8,15 +8,8 @@ const routes = [
     method: 'post',
     url: '/register',
     handler: async (req, res) => {
-      const { endpoint, keys } = req.body;
-      const pushSubscription = {
-        endpoint,
-        keys: {
-          auth: keys.auth,
-          p256dh: keys.p256dh
-        }
-      };
-      const saved = await saveSubscription(pushSubscription);
+      const subscription = req.body;
+      const saved = await saveSubscription(subscription);
       if (saved) res.status(200).json({ msg: 'Subscription saved!' });
       else res.status(500).json({ err: 'Could not save subscription!' });
     }
