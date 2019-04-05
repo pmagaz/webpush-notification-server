@@ -1,9 +1,9 @@
 /* eslint-disable no-restricted-syntax */
 const registerUrl = 'http://localhost:8000/register';
 const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
-const publicVapidKey = 'YOUR_PUBLIC_KEY';
+const publicVapidKey = 'BNAmqY_UxmdB7Wmof2HPJZJRFlqqxbZs46LlOjSCwddPGMaivQZ48uXaa0G8FXaNvXp5vnJWr-lVDxknRBykgKs';
 
-function urlBase64ToUint8Array(base64String) {
+const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
   const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
   const rawData = atob(base64);
@@ -13,7 +13,7 @@ function urlBase64ToUint8Array(base64String) {
     outputArray[i] = rawData.charCodeAt(i);
   }
   return outputArray;
-}
+};
 
 const saveSubscription = async subscription => {
   const res = await fetch(registerUrl, {
@@ -27,7 +27,7 @@ const saveSubscription = async subscription => {
   return res.status === 200 ? res.json() : false;
 };
 
-const registerSubscription = async swRegistration => {
+const generateSubscription = async swRegistration => {
   await window.Notification.requestPermission();
   const subscribed = await swRegistration.pushManager.getSubscription();
   if (!subscribed) {
@@ -48,7 +48,7 @@ const registerServiceWorker = async () => {
 const register = async () => {
   if ('serviceWorker' in navigator) {
     const swRegistration = await registerServiceWorker();
-    await registerSubscription(swRegistration);
+    await generateSubscription(swRegistration);
   } else throw new Error('ServiceWorkers are not supported by your browser!');
 };
 
