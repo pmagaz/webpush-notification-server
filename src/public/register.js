@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 const registerUrl = 'http://localhost:8000/register';
 const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
-const publicVapidKey = 'BNAmqY_UxmdB7Wmof2HPJZJRFlqqxbZs46LlOjSCwddPGMaivQZ48uXaa0G8FXaNvXp5vnJWr-lVDxknRBykgKs';
+const publicVapidKey = 'YOUR_PUBLIC_KEY';
 
 const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
