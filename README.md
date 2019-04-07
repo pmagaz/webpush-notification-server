@@ -1,6 +1,6 @@
 # Webpush Notification Server
 
-This repository is a NodeJs Express server for sending [Webpush Notifications](https://developers.google.com/web/fundamentals/codelabs/push-notifications/) using [web-push](https://www.npmjs.com/package/web-push) and storing subscriptions using [NeDb](https://github.com/louischatriot/nedb) database. It also cointains a client [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) to receive webpush notifications in the browser.
+This repository is a NodeJs Express server for sending [Webpush Notifications](https://developers.google.com/web/fundamentals/codelabs/push-notifications/) using [web-push](https://www.npmjs.com/package/web-push) and storing subscriptions using [NeDb](https://github.com/louischatriot/nedb) database. It also contains a client [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) to receive webpush notifications in the browser.
 
 ## Table of contents
 
@@ -20,7 +20,7 @@ $ npm install OR yarn install
 
 ## Configuration
 
-This server uses [web-push](https://www.npmjs.com/package/web-push) that uses VAPID keys, so first of all you need to generate public and private VAPID keys. There is a npm task created for this purpose:
+This server uses [web-push](https://www.npmjs.com/package/web-push) that uses VAPID keys, so first of all you need to generate public and private VAPID keys. There is an npm task created for this purpose:
 
 ```
 $ yarn generate-keys
@@ -77,11 +77,11 @@ To send notifications you have to make a POST request to the `http://localhost:8
 }
 ```
 
-The browser will receive the notification and when the user will click on the notitication a new browser window will load the url value. You can configure the notification icon in `.env` file.
+The browser will receive the notification and when the user will click on the notification a new browser window will load the url value. You can configure the notification icon in `.env` file.
 
 Notice that the subscription will be removed from the database in case to get a 410 error, meaning that the subscription stored in our database is no longer valid and it should be generated again.
 
-In `public/index/html` you will find a form to easly test the sending process but you can also use POSTMAN or similars.
+In `public/index/html` you will find a form to easily test the sending process but you can also use Postman, Curl or similar.
 
 ## Architecture
 
@@ -101,7 +101,7 @@ In `public/index/html` you will find a form to easly test the sending process bu
 
 - `index.html` Html file that allows you to send the notification with an specific data/payload using a form field.
 
-- `register.js` File that register the service worker and will send the webpush subscription to the server.
+- `register.js` File that registers the service worker and will send the webpush subscription to the server.
 
 - `serviceWorker.js` Service worker itself!
 
