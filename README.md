@@ -1,6 +1,6 @@
-# Webpush Notification Server
+# Web Push Notification Server
 
-This repository is a NodeJs Express server for sending [Webpush Notifications](https://developers.google.com/web/fundamentals/codelabs/push-notifications/) using [web-push](https://www.npmjs.com/package/web-push) and storing subscriptions using [NeDb](https://github.com/louischatriot/nedb) database. It also contains a client [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) to receive webpush notifications in the browser.
+This repository is a NodeJs Express server for sending [Web Push Notifications](https://developers.google.com/web/fundamentals/codelabs/push-notifications/) using [web-push](https://www.npmjs.com/package/web-push) and storing subscriptions using [NeDb](https://github.com/louischatriot/nedb) database. It also contains a client [Service Worker](https://developers.google.com/web/fundamentals/primers/service-workers/) to receive Web Push notifications in the browser.
 
 ## Table of contents
 
@@ -60,7 +60,7 @@ First of all you have to launch the server with the following command:
 $ yarn start
 ```
 
-This will launch the webpush notification server in the port defined in `.env` file and also will serve the client side code located in `public/` folder using express static path. This client code will register the service worker and prompt the user to allow webpush notifications from that host.
+This will launch the Web Push notification server in the port defined in `.env` file and also will serve the client side code located in `public/` folder using express static path. This client code will register the service worker and prompt the user to allow Web Push notifications from that host.
 
 If the user accepts to receive notifications, a new subscription will be generated using [subscribe](https://developer.mozilla.org/en-US/docs/Web/API/PushManager/subscribe) method of the [PushManager](https://developer.mozilla.org/en-US/docs/Web/API/PushManager) and the subscription will be sent to
 `http://localhost:8000/register` POST route that will store the subscription in the database if it doesn't exists yet.
@@ -93,7 +93,7 @@ In `public/index/html` you will find a form to easily test the sending process b
 
 - `/statics` Statics paths to serve public content located in "src/public".
 
-- `/routing` Express routes and its handlers for save subscriptions and send webpush notifications.
+- `/routing` Express routes and its handlers for save subscriptions and send Web Push notifications.
 
 - `/db` NeDb database handlers for insert, remove and get all the subscriptions stored in the database.
 
@@ -101,7 +101,7 @@ In `public/index/html` you will find a form to easily test the sending process b
 
 - `index.html` Html file that allows you to send the notification with an specific data/payload using a form field.
 
-- `register.js` File that registers the service worker and will send the webpush subscription to the server.
+- `register.js` File that registers the service worker and will send the Web Push subscription to the server.
 
 - `serviceWorker.js` Service worker itself!
 
