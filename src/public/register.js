@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-syntax */
-const registerUrl = 'http://localhost:8000/register';
+const registerUrl = 'http://localhost:8000/register?ssid='+navigator.userAgent;
 const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
 const publicVapidKey = 'BPB3wdNSAqqKC7tfAQCM2QGPNKD8_MLwEDuq72NE1-V7Z6uQCKs5Bp02cjoiKE-f-wKGuEtmmOWV7NRId5k-igg';
 

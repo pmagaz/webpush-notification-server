@@ -5,10 +5,10 @@ const notificationDelay = 500;
 
 const showNotification = (title, options) =>
   new Promise(resolve => {
-    setTimeout(() => {
+   // setTimeout(() => {
       swPostMessageToAllClients(title);
       //self.registration.showNotification(title, options).then(() => resolve());
-    }, notificationDelay);
+   // }, notificationDelay);
   });
 
 self.addEventListener('push', async event => {
