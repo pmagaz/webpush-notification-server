@@ -13,5 +13,6 @@ setRouting(app);
 setStatics(app);
 
 app.listen(process.env.EXPRESS_PORT, () => {
+  console.log(process);
   console.log(`Webpush notification server up in ${ process.env.EXPRESS_PORT }`);
 });

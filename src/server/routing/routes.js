@@ -10,6 +10,7 @@ const routes = [
     handler: async (req, res) => {
       const subscription = req.body;
       const saved = await saveSubscription(subscription);
+      console.log("register", subscription);
       if (saved) res.status(200).json({ msg: 'Subscription saved!' });
       else res.status(500).json({ err: 'Could not save subscription!' });
     }

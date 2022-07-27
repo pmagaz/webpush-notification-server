@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-syntax */
 const registerUrl = 'http://localhost:8000/register';
 const serviceWorkerUrl = 'http://localhost:8000/serviceWorker.js';
-const publicVapidKey = 'YOUR_PUBLIC_KEY';
+const publicVapidKey = 'BPB3wdNSAqqKC7tfAQCM2QGPNKD8_MLwEDuq72NE1-V7Z6uQCKs5Bp02cjoiKE-f-wKGuEtmmOWV7NRId5k-igg';
 
 const urlBase64ToUint8Array = base64String => {
   const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
@@ -35,10 +35,14 @@ const generateSubscription = async swRegistration => {
       userVisibleOnly: true,
       applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
     });
+    console.log("pushSubscription first time", subscription);
     const saved = await saveSubscription(subscription);
     if (saved) return saved;
     throw Error('Subscription not saved!');
-  } else return pushSubscription;
+  } else {
+    console.log("pushSubscription reused", pushSubscription);
+    return pushSubscription;
+  } 
 };
 
 const registerServiceWorker = async () => {
@@ -48,6 +52,14 @@ const registerServiceWorker = async () => {
 const register = async () => {
   if ('serviceWorker' in navigator) {
     const swRegistration = await registerServiceWorker();
+    navigator.serviceWorker.addEventListener('message', function(e) {
+      switch(e.data) {
+        default:
+          alert('client recv message from ws'+ e.data);
+          e.ports[0].postMessage(e.data);
+          break;
+      }
+     });
     await generateSubscription(swRegistration);
   } else throw new Error('ServiceWorkers are not supported by your browser!');
 };
